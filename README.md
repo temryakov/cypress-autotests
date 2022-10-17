@@ -6,11 +6,9 @@ This is a repository contains autotests coverage for https://www.saucedemo.com. 
 2. Clone that repository with command: 
 ```
 $ git clone https://github.com/temryakov/cypress-autotests
-
 ```
 3. Run that command:
 ```
 $ npx cypress open
-
 ```
 3. Choose spec file and run test-case

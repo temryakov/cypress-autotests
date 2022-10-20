@@ -1,3 +1,5 @@
+import checkboxesPage from '/Users/admin/repositories/cypress-autotests/cypress/pages/checkboxesPage.js'
+
 describe.skip('A/B Testing', () => {
   it('test', () => {
     cy.visit('/')
@@ -28,9 +30,13 @@ describe.skip('Challenging DOM',  () => {
   })
 });
 
-describe.skip('Checkboxes',  () => {
-  it('test', () => {
-    cy.visit('/')
+describe('Checkboxes',  () => {
+  it('Should be all checkboxes are able to being checked and unchecked', () => {
+    checkboxesPage.moveToTheCheckboxes();
+    checkboxesPage.checkFirstbox();
+    checkboxesPage.checkSecondbox();
+    checkboxesPage.uncheckFirstbox();
+    checkboxesPage.uncheckSecondbox();
   })
 });
 

@@ -124,7 +124,7 @@ describe.skip('Forgot Password',  () => {
   })
 });
 
-describe.skip('Form Authentication',  () => {
+describe('Form Authentication',  () => {
   it('test', () => {
     cy.visit('/')
   })

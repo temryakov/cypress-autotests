@@ -1,3 +1,5 @@
+import homePage from "./homePage";
+
 class checkboxesPage {
 
     elements = {
@@ -7,7 +9,7 @@ class checkboxesPage {
     }
     moveToTheCheckboxes() {
         cy.visit('/');
-        cy.get('a').contains('Checkboxes').click() // should move to the mainPage
+        homePage.moveTo('Checkboxes')
         this.elements.title().should('be.visible');
     }
 

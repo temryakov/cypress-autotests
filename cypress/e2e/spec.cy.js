@@ -1,3 +1,6 @@
+// import loginPage from '/cypress/pages/loginPage.js'
+import homePage from "cypress/pages/homePage.js";
+
 describe.skip('A/B Testing', () => {
   it('test', () => {
     cy.visit('/')
@@ -120,7 +123,8 @@ describe.skip('Forgot Password',  () => {
 
 describe('Form Authentication',  () => {
   it('test', () => {
-    cy.visit('/')
+    homePage.moveTo('Form Authentication')
+    // authformPage.moveToTheAuth();
   })
 });
 

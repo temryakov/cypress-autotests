@@ -1,4 +1,5 @@
 import checkboxesPage from '/Users/admin/repositories/cypress-autotests/cypress/pages/checkboxesPage.js'
+import loginPage from '/Users/admin/repositories/cypress-autotests/cypress/pages/loginPage.js'
 
 describe.skip('A/B Testing', () => {
   it('test', () => {
@@ -125,8 +126,28 @@ describe.skip('Forgot Password',  () => {
 });
 
 describe('Form Authentication',  () => {
-  it('test', () => {
-    cy.visit('/')
+  it('Should be able to enter bad credentials', () => {
+    loginPage.goLoginPage()
+    loginPage.submitCredentials('Bad', 'Credentials');
+    loginPage.errorMessageShould('be.visible')
+  })
+  it('Should be able to enter valid credentials', () => {
+    loginPage.goLoginPage()
+    loginPage.login()
+  });
+  it('Should be able to log out', () => {
+    loginPage.goLoginPage()
+    loginPage.login()
+    loginPage.logout()
+  })
+  it('Should be able to clear input data and submit empty one', () => {
+    loginPage.goLoginPage();
+    loginPage.typeUsername('Login');
+    loginPage.typePassword('Password')
+    loginPage.clearUsername();
+    loginPage.clearPassword();
+    loginPage.submitForm()
+    loginPage.errorMessageShould('be.visible')
   })
 });
 

@@ -1,4 +1,5 @@
 import loginPage from '/Users/admin/repositories/cypress-autotests/cypress/pages/loginPage.js'
+import passwordPage from '/Users/admin/repositories/cypress-autotests/cypress/pages/passwordPage.js'
 
 describe.skip('A/B Testing', () => {
   it('test', () => {
@@ -116,11 +117,12 @@ describe.skip('Floating Menu',  () => {
 
 describe.skip('Forgot Password',  () => {
   it('test', () => {
-    cy.visit('/')
+    passwordPage.goPasswordPage()
+    passwordPage.submitEmail('therevors@gmail.com')
   })
 });
 
-describe('Form Authentication',  () => {
+describe.skip('Form Authentication',  () => {
   it('Should be able to enter bad credentials', () => {
     loginPage.goLoginPage()
     loginPage.submitCredentials('Bad', 'Credentials');

@@ -1,0 +1,10 @@
+{
+    "valid_user": {
+        "login": "tomsmith",
+        "password": "SuperSecretPassword!"
+    },
+    "non_existing_user": {
+        "login": "john_doe",
+        "password": "johndoeqwerty123"
+    }
+}

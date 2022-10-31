@@ -1,5 +1,6 @@
 import loginPage from '/Users/admin/repositories/cypress-autotests/cypress/pages/loginPage.js'
 import passwordPage from '/Users/admin/repositories/cypress-autotests/cypress/pages/passwordPage.js'
+import users from '../support/users';
 
 describe.skip('A/B Testing', () => {
   it('test', () => {
@@ -122,19 +123,20 @@ describe.skip('Forgot Password',  () => {
   })
 });
 
-describe.skip('Form Authentication',  () => {
+describe('Form Authentication',  () => {
   it('Should be able to enter bad credentials', () => {
     loginPage.goLoginPage()
-    loginPage.submitCredentials('Bad', 'Credentials');
+    loginPage.login(users.non_existing_user)
     loginPage.errorMessageShould('be.visible')
   })
   it('Should be able to enter valid credentials', () => {
     loginPage.goLoginPage()
-    loginPage.login()
+    loginPage.login(users.valid_user)
+    loginPage.verifyLoggedIn()
   });
   it('Should be able to log out', () => {
     loginPage.goLoginPage()
-    loginPage.login()
+    loginPage.login(users.valid_user)
     loginPage.logout()
   })
   it('Should be able to clear input data and submit empty one', () => {

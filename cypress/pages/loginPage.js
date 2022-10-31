@@ -1,4 +1,5 @@
 import homePage from "./homePage.js";
+import users from '../support/users';
 
 class loginPage {
 
@@ -6,7 +7,7 @@ class loginPage {
         titleLoginPage: () => cy.get('h2').contains('Login Page'),
         usernameInput: () => cy.get('#username'),
         passwordInput: () => cy.get('#password'),
-        errorMessage: () => cy.contains('Your username is invalid!'),
+        errorMessage: () => cy.contains('invalid'),
         submitButton: () => cy.get('[type="submit"]'),
 
         titleSecureArea: () => cy.get('h2').contains('Secure Area'),
@@ -50,10 +51,11 @@ class loginPage {
     errorMessageShould(property) {
         this.elements.errorMessage().should(property)
     }
-    login() {
-        this.submitCredentials('tomsmith', 'SuperSecretPassword!'); // Should hide test credentials in a future
-        this.errorMessageShould('not.exist')
+    verifyLoggedIn() {
         this.elements.titleSecureArea().should('be.visible');
+    }
+    login(users) {
+        this.submitCredentials(users.login, users.password); // Should hide test credentials in a future
     }
     logout() {
         this.elements.titleSecureArea().should('be.visible');

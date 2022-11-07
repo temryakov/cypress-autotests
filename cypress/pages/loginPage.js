@@ -1,5 +1,4 @@
 import homePage from "./homePage.js";
-// import users from '../support/users';
 
 class loginPage {
 
@@ -55,7 +54,7 @@ class loginPage {
         this.elements.titleSecureArea().should('be.visible');
     }
     login(users) {
-        this.submitCredentials(users.login, users.password); // Should hide test credentials in a future
+        this.submitCredentials(users.login, users.password); 
     }
     logout() {
         this.elements.titleSecureArea().should('be.visible');

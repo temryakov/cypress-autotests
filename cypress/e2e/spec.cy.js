@@ -2,6 +2,7 @@ import checkboxesPage from '/Users/admin/repositories/cypress-autotests/cypress/
 import loginPage from '/Users/admin/repositories/cypress-autotests/cypress/pages/loginPage.js'
 import passwordPage from '/Users/admin/repositories/cypress-autotests/cypress/pages/passwordPage.js'
 import users from '../support/users';
+import dynamicLoadingPage from '/Users/admin/repositories/cypress-autotests/cypress/pages/dynamicLoadingPage.js'
 
 describe.skip('A/B Testing', () => {
   it('test', () => {
@@ -85,9 +86,17 @@ describe.skip('Dynamic Controls',  () => {
   })
 });
 
-describe.skip('Dynamic Loading',  () => {
-  it('test', () => {
-    cy.visit('/')
+describe.only('Dynamic Loading',  () => {
+
+  it('Should obtain hidden element', () => {
+    dynamicLoadingPage.goLoadingPage();
+    dynamicLoadingPage.getHiddenElement();
+    dynamicLoadingPage.verifyResult('be.visible')
+  })
+  it('Should obtain hidden element', () => {
+    dynamicLoadingPage.goLoadingPage();
+    dynamicLoadingPage.getRenderedElement();
+    dynamicLoadingPage.verifyResult('exist')
   })
 });
 

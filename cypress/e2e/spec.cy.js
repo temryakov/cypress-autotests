@@ -3,6 +3,7 @@ import loginPage from '/Users/admin/repositories/cypress-autotests/cypress/pages
 import passwordPage from '/Users/admin/repositories/cypress-autotests/cypress/pages/passwordPage.js'
 import users from '../support/users';
 import dynamicLoadingPage from '/Users/admin/repositories/cypress-autotests/cypress/pages/dynamicLoadingPage.js'
+import dropdownPage from '/Users/admin/repositories/cypress-autotests/cypress/pages/dropdownPage'
 
 describe.skip('A/B Testing', () => {
   it('test', () => {
@@ -68,9 +69,12 @@ describe.skip('Drag and Drop',  () => {
   })
 });
 
-describe.skip('Dropdown',  () => {
-  it('test', () => {
-    cy.visit('/')
+describe('Dropdown',  () => {
+  it('Should being able to select some options', () => {
+    dropdownPage.goDropdownPage()
+    dropdownPage.selectOption('1');
+    dropdownPage.selectOption('2');
+    dropdownPage.selectOption('1');
   })
 });
 
@@ -86,7 +90,7 @@ describe.skip('Dynamic Controls',  () => {
   })
 });
 
-describe.only('Dynamic Loading',  () => {
+describe('Dynamic Loading',  () => {
 
   it('Should obtain hidden element', () => {
     dynamicLoadingPage.goLoadingPage();

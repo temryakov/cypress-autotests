@@ -3,6 +3,7 @@ import loginPage from '/Users/admin/repositories/cypress-autotests/cypress/pages
 import passwordPage from '/Users/admin/repositories/cypress-autotests/cypress/pages/passwordPage.js'
 import users from '../support/users';
 import dynamicLoadingPage from '/Users/admin/repositories/cypress-autotests/cypress/pages/dynamicLoadingPage.js'
+import sliderPage from '/Users/admin/repositories/cypress-autotests/cypress/pages/sliderPage.js'
 import dropdownPage from '/Users/admin/repositories/cypress-autotests/cypress/pages/dropdownPage'
 
 describe.skip('A/B Testing', () => {
@@ -180,9 +181,15 @@ describe.skip('Geolocation',  () => {
   })
 });
 
-describe.skip('Horizontal Slider',  () => {
-  it('test', () => {
-    cy.visit('/')
+describe.only('Horizontal Slider',  () => {
+  it('Should change value in horizontal slider', () => {
+    sliderPage.goSliderPage();
+    sliderPage.setValue(5);
+    sliderPage.setValue(3.8);
+    sliderPage.setValue(0);
+    sliderPage.setValue(2.3);
+    sliderPage.setValue(30);
+    sliderPage.setValue(-30);
   })
 });
 

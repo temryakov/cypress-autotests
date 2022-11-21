@@ -18,5 +18,8 @@
   "homepage": "https://github.com/temryakov/cypress-autotests#readme",
   "devDependencies": {
     "cypress": "^10.10.0"
+  },
+  "dependencies": {
+    "cypress-real-events": "^1.7.4"
   }
 }

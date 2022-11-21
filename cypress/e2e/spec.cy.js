@@ -3,6 +3,7 @@ import loginPage from '/Users/admin/repositories/cypress-autotests/cypress/pages
 import passwordPage from '/Users/admin/repositories/cypress-autotests/cypress/pages/passwordPage.js'
 import users from '../support/users';
 import dynamicLoadingPage from '/Users/admin/repositories/cypress-autotests/cypress/pages/dynamicLoadingPage.js'
+import hoversPage from '/Users/admin/repositories/cypress-autotests/cypress/pages/hoversPage'
 import sliderPage from '/Users/admin/repositories/cypress-autotests/cypress/pages/sliderPage.js'
 import dropdownPage from '/Users/admin/repositories/cypress-autotests/cypress/pages/dropdownPage'
 
@@ -193,10 +194,21 @@ describe.only('Horizontal Slider',  () => {
   })
 });
 
-describe.skip('Hovers',  () => {
-  it('test', () => {
-    cy.visit('/')
+describe('Hovers',  () => {
+  it('Should focus on profile block', () => {
+    hoversPage.goHoversPage();
+    hoversPage.focusProfile('user1')
+    hoversPage.focusProfile('user2')
+    hoversPage.focusProfile('user3')
   })
+  it('Should view profile', () => {
+    hoversPage.goHoversPage();
+    hoversPage.viewProfile('1');
+    cy.go('back');
+    hoversPage.viewProfile('2');
+    cy.go('back');
+    hoversPage.viewProfile('3');
+  });
 });
 
 describe.skip('Infinite Scroll',  () => {

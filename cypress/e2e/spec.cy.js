@@ -6,6 +6,7 @@ import dynamicLoadingPage from '/Users/admin/repositories/cypress-autotests/cypr
 import hoversPage from '/Users/admin/repositories/cypress-autotests/cypress/pages/hoversPage'
 import sliderPage from '/Users/admin/repositories/cypress-autotests/cypress/pages/sliderPage.js'
 import dropdownPage from '/Users/admin/repositories/cypress-autotests/cypress/pages/dropdownPage'
+import elementsPage from '/Users/admin/repositories/cypress-autotests/cypress/pages/elementsPage.js'
 
 describe.skip('A/B Testing', () => {
   it('test', () => {
@@ -13,9 +14,28 @@ describe.skip('A/B Testing', () => {
   })
 })
 
-describe.skip('Add/Remove Elements', () => {
-  it('test', () => {
-    cy.visit('/')
+describe('Add/Remove Elements', () => {
+  it('Should add one or several elements', () => {
+    elementsPage.goElementsPage();
+    elementsPage.addElements(1);
+    elementsPage.checkElementsCount(1);
+    elementsPage.addElements(3);
+    elementsPage.checkElementsCount(4);
+  })
+  it('Should remove one or several elements', () => {
+    elementsPage.goElementsPage();
+    elementsPage.addElements(1);
+    elementsPage.checkElementsCount(1);
+    elementsPage.removeCertainEl(1);
+    elementsPage.checkElementsCount(0);
+    elementsPage.addElements(10);
+    elementsPage.checkElementsCount(10);
+    elementsPage.removeElements(10);
+    elementsPage.checkElementsCount(0);
+    elementsPage.addElements(50);
+    elementsPage.checkElementsCount(50);
+    elementsPage.removeElements(50);
+    elementsPage.checkElementsCount(0);
   })
 })
 
@@ -182,7 +202,7 @@ describe.skip('Geolocation',  () => {
   })
 });
 
-describe.only('Horizontal Slider',  () => {
+describe('Horizontal Slider',  () => {
   it('Should change value in horizontal slider', () => {
     sliderPage.goSliderPage();
     sliderPage.setValue(5);

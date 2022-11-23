@@ -6,6 +6,7 @@ import dynamicLoadingPage from '/Users/admin/repositories/cypress-autotests/cypr
 import hoversPage from '/Users/admin/repositories/cypress-autotests/cypress/pages/hoversPage'
 import sliderPage from '/Users/admin/repositories/cypress-autotests/cypress/pages/sliderPage.js'
 import dropdownPage from '/Users/admin/repositories/cypress-autotests/cypress/pages/dropdownPage'
+import floatingPage from '/Users/admin/repositories/cypress-autotests/cypress/pages/floatingPage.js'
 
 describe.skip('A/B Testing', () => {
   it('test', () => {
@@ -130,9 +131,13 @@ describe.skip('File Upload',  () => {
   })
 });
 
-describe.skip('Floating Menu',  () => {
-  it('test', () => {
-    cy.visit('/')
+describe.only('Floating Menu',  () => {
+  it('Should be able to move to any page of menu', () => {
+    floatingPage.goFloatingPage();
+    floatingPage.pressButton('home');
+    floatingPage.pressButton('news')
+    floatingPage.pressButton('about')
+    floatingPage.pressButton('contact')
   })
 });
 
@@ -182,7 +187,7 @@ describe.skip('Geolocation',  () => {
   })
 });
 
-describe.only('Horizontal Slider',  () => {
+describe('Horizontal Slider',  () => {
   it('Should change value in horizontal slider', () => {
     sliderPage.goSliderPage();
     sliderPage.setValue(5);
